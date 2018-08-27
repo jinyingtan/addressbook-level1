@@ -484,11 +484,25 @@ public class AddressBook {
         final ArrayList<HashMap<PersonProperty, String>> matchedPersons = new ArrayList<>();
         for (HashMap<PersonProperty, String> person : getAllPersonsInAddressBook()) {
             final Set<String> wordsInName = new HashSet<>(splitByWhitespace(getNameFromPerson(person)));
-            if (!Collections.disjoint(wordsInName, keywords)) {
+            if (areKeywordsInNames(wordsInName, keywords)) {
                 matchedPersons.add(person);
             }
         }
         return matchedPersons;
+    }
+
+    /**
+     * Checks if the keywords are contained in the names
+     *
+     * @param keywords for validation
+     * @return whether the keywords are in the names
+     */
+    private static boolean areKeywordsInNames(Collection<String> names, Collection<String> keywords) {
+        if (!Collections.disjoint(names, keywords)) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
