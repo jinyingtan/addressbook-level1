@@ -613,14 +613,20 @@ public class AddressBook {
     private static String getUserInput() {
         System.out.print(LINE_PREFIX + "Enter command: ");
         String inputLine = SCANNER.nextLine();
-        // silently consume all blank and comment lines
-        while (inputLine.trim().isEmpty() || inputLine.trim().charAt(0) == INPUT_COMMENT_MARKER) {
+        while (consumingAllBlankAndCommentLines(inputLine)) {
             inputLine = SCANNER.nextLine();
         }
         return inputLine;
     }
 
-   /*
+    /**
+     * Silently consume all blank and comment lines
+     */
+    private static boolean consumingAllBlankAndCommentLines(String inputLine) {
+        return inputLine.trim().isEmpty() || inputLine.trim().charAt(0) == INPUT_COMMENT_MARKER;
+    }
+
+    /*
     * NOTE : =============================================================
     * Note how the method below uses Java 'Varargs' feature so that the
     * method can accept a varying number of message parameters.
