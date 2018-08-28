@@ -488,7 +488,10 @@ public class AddressBook {
      * @return whether the keywords are in the names
      */
     private static boolean areKeywordsInNames(Collection<String> names, Collection<String> keywords) {
-        if (!Collections.disjoint(names, keywords)) {
+        final List<String> lowerCasedNames = lowerCaseStringsInCollections(names);
+        final List<String> lowerCassedKeywords = lowerCaseStringsInCollections(keywords);
+
+        if (!Collections.disjoint(lowerCasedNames, lowerCassedKeywords)) {
             return true;
         }
 
