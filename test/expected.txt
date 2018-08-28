@@ -181,6 +181,32 @@
 || 
 || 5 persons found!
 || ===================================================
+|| Enter command: || [Command entered:  add ABCDE p/12345 e/abcde@abcde.com]
+|| New person added: ABCDE, Phone: 12345, Email: abcde@abcde.com
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+||      1. Adam Brown  Phone Number: 111111  Email: adam@gmail.com
+||      2. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg
+||      3. Charlie Dickson  Phone Number: 333333  Email: charlie.d@nus.edu.sg
+||      4. Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg
+||      5. Esther Potato  Phone Number: 555555  Email: esther@notreal.potato
+||      6. ABCDE  Phone Number: 12345  Email: abcde@abcde.com
+|| 
+|| 6 persons found!
+|| ===================================================
+|| Enter command: || [Command entered:  sort]
+||      1. ABCDE  Phone Number: 12345  Email: abcde@abcde.com
+||      2. Adam Brown  Phone Number: 111111  Email: adam@gmail.com
+||      3. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg
+||      4. Charlie Dickson  Phone Number: 333333  Email: charlie.d@nus.edu.sg
+||      5. Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg
+||      6. Esther Potato  Phone Number: 555555  Email: esther@notreal.potato
+|| 
+|| 6 persons found!
+|| ===================================================
+|| Enter command: || [Command entered:  delete 1]
+|| Deleted Person: ABCDE  Phone Number: 12345  Email: abcde@abcde.com
+|| ===================================================
 || Enter command: || [Command entered:  find]
 || 
 || 0 persons found!
