@@ -15,6 +15,7 @@ import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /*
  * NOTE : =============================================================
@@ -1179,4 +1180,15 @@ public class AddressBook {
         return new ArrayList<>(Arrays.asList(toSplit.trim().split("\\s+")));
     }
 
+    /**
+     * Lower case all strings in a source collection
+     *
+     * @param collections source collection
+     * @return a list with all strings being lower cased
+     */
+    private static List<String> lowerCaseStringsInCollections(Collection<String> collections) {
+        return collections.stream()
+                .map(String::toLowerCase)
+                .collect(Collectors.toList());
+    }
 }
