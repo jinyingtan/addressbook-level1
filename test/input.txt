@@ -51,6 +51,7 @@
   add ABCDE p/12345 e/abcde@abcde.com
   list
   sort
+  delete 1
 
 ##########################################################
 # test find persons command
