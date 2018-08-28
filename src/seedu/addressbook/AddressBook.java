@@ -186,7 +186,7 @@ public class AddressBook {
      * This is a subset of the full list. Deleting persons in the pull list does not delete
      * those persons from this list.
      */
-    private static ArrayList<HashMap<PersonProperty, String>> latestPersonListingView = getAllPersonsInAddressBook(); // initial view is of all
+    private static ArrayList<HashMap<PersonProperty, String>> latestPersonListingView = getAllPersonsInAddressBook();
 
     /**
      * The path to the file used for storing person data.
@@ -815,7 +815,8 @@ public class AddressBook {
     /**
      * Deletes the specified person from the addressbook if it is inside. Saves any changes to storage file.
      *
-     * @param exactPerson the actual person inside the address book (exactPerson == the person to delete in the full list)
+     * @param exactPerson the actual person inside the address book
+     *                    (exactPerson == the person to delete in the full list)
      * @return true if the given person was found and deleted in the model
      */
     private static boolean deletePersonFromAddressBook(HashMap<PersonProperty, String> exactPerson) {
