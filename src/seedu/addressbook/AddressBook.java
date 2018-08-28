@@ -600,8 +600,9 @@ public class AddressBook {
     }
 
     /**
-     * S
-     * @param persons
+     * Sort persons into alphabetical order
+     *
+     * @param persons that needs to be sorted
      */
     private static void sortPersonsInAlphabeticalOrder(ArrayList<HashMap<PersonProperty, String>> persons) {
         persons.sort(new Comparator<HashMap<PersonProperty, String>>() {
