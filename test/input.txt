@@ -17,7 +17,7 @@
   list
 
 ##########################################################
-# test add person command, setup state for futuer tests
+# test add person command, setup state for further tests
 ##########################################################
 
   # should catch invalid args format
@@ -43,6 +43,14 @@
   list
   add Esther Potato p/555555 e/esther@notreal.potato
   list
+
+##########################################################
+# test sort command
+##########################################################
+  
+  add ABCDE p/12345 e/abcde@abcde.com
+  list
+  sort
 
 ##########################################################
 # test find persons command
