@@ -603,7 +603,7 @@ public class AddressBook {
     private static String getUserInput() {
         System.out.print(LINE_PREFIX + "Enter command: ");
         String inputLine = SCANNER.nextLine();
-        while (consumingAllBlankAndCommentLines(inputLine)) {
+        while (consumeAllBlankAndCommentLines(inputLine)) {
             inputLine = SCANNER.nextLine();
         }
         return inputLine;
@@ -612,7 +612,7 @@ public class AddressBook {
     /**
      * Silently consume all blank and comment lines
      */
-    private static boolean consumingAllBlankAndCommentLines(String inputLine) {
+    private static boolean consumeAllBlankAndCommentLines(String inputLine) {
         return inputLine.trim().isEmpty() || inputLine.trim().charAt(0) == INPUT_COMMENT_MARKER;
     }
 
