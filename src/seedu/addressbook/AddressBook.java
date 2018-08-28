@@ -110,6 +110,11 @@ public class AddressBook {
     private static final String COMMAND_LIST_DESC = "Displays all persons as a list with index numbers.";
     private static final String COMMAND_LIST_EXAMPLE = COMMAND_LIST_WORD;
 
+    private static final String COMMAND_SORT_WORD = "sort";
+    private static final String COMMAND_SORT_DESC = "Displays all persons as a list "
+            + "in alphabetical order with index numbers.";
+    private static final String COMMAND_SORT_EXAMPLE = COMMAND_SORT_WORD;
+
     private static final String COMMAND_DELETE_WORD = "delete";
     private static final String COMMAND_DELETE_DESC = "Deletes a person identified by the index number used in "
             + "the last find/list call.";
@@ -139,6 +144,8 @@ public class AddressBook {
      * If the first non-whitespace character in a user's input line is this, that line will be ignored.
      */
     private static final char INPUT_COMMENT_MARKER = '#';
+
+    private static final boolean SORT_ADDRESS_BOOK = true;
 
     /*
      * This variable is declared for the whole class (instead of declaring it
@@ -359,7 +366,9 @@ public class AddressBook {
         case COMMAND_FIND_WORD:
             return executeFindPersons(commandArgs);
         case COMMAND_LIST_WORD:
-            return executeListAllPersonsInAddressBook();
+            return executeListAllPersonsInAddressBook(!SORT_ADDRESS_BOOK);
+        case COMMAND_SORT_WORD:
+            return executeListAllPersonsInAddressBook(SORT_ADDRESS_BOOK);
         case COMMAND_DELETE_WORD:
             return executeDeletePerson(commandArgs);
         case COMMAND_CLEAR_WORD:
@@ -579,10 +588,30 @@ public class AddressBook {
      *
      * @return feedback display message for the operation result
      */
-    private static String executeListAllPersonsInAddressBook() {
+    private static String executeListAllPersonsInAddressBook(boolean isSort) {
         ArrayList<HashMap<PersonProperty, String>> toBeDisplayed = getAllPersonsInAddressBook();
+
+        if(isSort) {
+            sortPersonsInAlphabeticalOrder(toBeDisplayed);
+        }
+
         showToUser(toBeDisplayed);
         return getMessageForPersonsDisplayedSummary(toBeDisplayed);
+    }
+
+    /**
+     * S
+     * @param persons
+     */
+    private static void sortPersonsInAlphabeticalOrder(ArrayList<HashMap<PersonProperty, String>> persons) {
+        persons.sort(new Comparator<HashMap<PersonProperty, String>>() {
+            @Override
+            public int compare(HashMap<PersonProperty, String> o1, HashMap<PersonProperty, String> o2) {
+                final String personOneName = o1.get(PersonProperty.NAME).toLowerCase();
+                final String personTwoName = o2.get(PersonProperty.NAME).toLowerCase();
+                return personOneName.compareTo(personTwoName);
+            }
+        });
     }
 
     /**
