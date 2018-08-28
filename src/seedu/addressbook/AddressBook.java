@@ -592,7 +592,7 @@ public class AddressBook {
         ArrayList<HashMap<PersonProperty, String>> toBeDisplayed = getAllPersonsInAddressBook();
 
         if(isSort) {
-            sortPersonsInAlphabeticalOrder(toBeDisplayed);
+            toBeDisplayed = sortPersonsInAlphabeticalOrder(toBeDisplayed);
         }
 
         showToUser(toBeDisplayed);
@@ -604,8 +604,11 @@ public class AddressBook {
      *
      * @param persons that needs to be sorted
      */
-    private static void sortPersonsInAlphabeticalOrder(ArrayList<HashMap<PersonProperty, String>> persons) {
-        persons.sort(new Comparator<HashMap<PersonProperty, String>>() {
+    private static ArrayList<HashMap<PersonProperty, String>> sortPersonsInAlphabeticalOrder(ArrayList<HashMap<PersonProperty, String>> persons) {
+        final ArrayList<HashMap<PersonProperty, String>> sortedPersons = new ArrayList<>();
+        sortedPersons.addAll(persons);
+
+        sortedPersons.sort(new Comparator<HashMap<PersonProperty, String>>() {
             @Override
             public int compare(HashMap<PersonProperty, String> o1, HashMap<PersonProperty, String> o2) {
                 final String personOneName = o1.get(PersonProperty.NAME).toLowerCase();
@@ -613,6 +616,8 @@ public class AddressBook {
                 return personOneName.compareTo(personTwoName);
             }
         });
+
+        return sortedPersons;
     }
 
     /**
